@@ -29,6 +29,9 @@ public interface IProgramRepository  extends JpaRepository<Program , Integer> {
 	List<Program> findByCollegeId(@Param("collegeId") int collegeId);
 @Query(value="select college_id from program where program_name= :programName ;",nativeQuery=true)
 List<Integer> findCollegeByProgramName(@Param("programName") String programName);
+@Query(value="delete from program where program_id= :id ;",nativeQuery=true)
+int  deleteByprogramId(@Param("id")  int programId);
+
 
 	
 

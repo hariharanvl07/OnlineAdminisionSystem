@@ -13,7 +13,7 @@ public interface IProgramService {
 	public  ArrayList<Program> getApplicationDetailsByCollegeName(String collegeName);
 	public  Optional<Program> getProgramDetailsByName(String programName);
 
-	public void deleteProgramById(int programId);
+	public void deleteByprogramId(int programId);
 	public void deleteProgramByName(String programName);
 	public Optional<Program> getProgramById(int programId);
 	public Program  updateProgramStatus(Program program);
@@ -22,6 +22,7 @@ public interface IProgramService {
 	
 	List<Program> getProgramByEligibility(String programEligibility);
 	public List<Program> getProgramsByCollegeId(int collegeId);
+	public List<Program> getProgramsByCollegeName(String name);
 	List<Integer> getCollegeByProgramName(String programName);
 
 }

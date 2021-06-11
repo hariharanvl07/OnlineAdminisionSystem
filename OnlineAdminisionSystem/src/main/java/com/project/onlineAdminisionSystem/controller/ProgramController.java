@@ -38,7 +38,7 @@ public class ProgramController {
 	
 	@DeleteMapping("/deleteProgram/{id}")
 	public void deleteProgramById(@PathVariable("id") int id) {
-		service.deleteProgramById(id);
+		service.deleteByprogramId(id);
 	}
 	
 @GetMapping("/getAllPrograms")
@@ -46,10 +46,16 @@ public List<Program> getAllPrograms() {
 
 	return service.viewAllProgramDetails();
 }
-@GetMapping("/getProgramByName/{collegeName}")
-public Optional<Program> getProgramByName(@PathVariable("ProgramName") String name) {
+@GetMapping("/getProgramByName/{programName}")
+public Optional<Program> getProgramByName(@PathVariable("programName") String name) {
 
 	return service.getProgramDetailsByName(name);
+}
+
+@GetMapping("/getProgramByCollegeName/{collegeName}")
+public List<Program> getProgramByCollegeName(@PathVariable("collegeName") String collegeName) {
+
+	return service.getProgramsByCollegeName(collegeName);
 }
 
 @GetMapping("/getProgrameByCollegeId/{id}")
@@ -70,4 +76,6 @@ public List<College> getCollegeByProgramName(@PathVariable("programName") String
 List<College> college = clgService.getCollegeByProgramName(id);
 return college;
 }
+
+
 }

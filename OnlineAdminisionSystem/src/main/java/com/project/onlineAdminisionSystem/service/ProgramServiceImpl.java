@@ -7,12 +7,16 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.onlineAdminisionSystem.entity.College;
 import com.project.onlineAdminisionSystem.entity.Program;
 import com.project.onlineAdminisionSystem.repository.IProgramRepository;
 @Service	
 public class ProgramServiceImpl implements IProgramService{
 @Autowired
 private IProgramRepository repo;
+
+@Autowired 
+private ICollegeService service;
 	@Override
 	public Program addProgram(Program program) {
 	
@@ -46,7 +50,7 @@ private IProgramRepository repo;
 	}
 
 	@Override
-	public void deleteProgramById(int programId) {
+	public void deleteByprogramId(int programId) {
 
 		repo.deleteById(programId);
 	}
@@ -90,6 +94,14 @@ private IProgramRepository repo;
 	public List<Integer> getCollegeByProgramName(String programName) {
 	
 		return repo.findCollegeByProgramName(programName);
+	}
+
+
+	@Override
+	public List<Program> getProgramsByCollegeName(String name) {
+	College college = service.getCollegeDetailsByName(name).orElseThrow();
+	List<Program> program = repo.findByCollegeId(college.getCollegeRegId());
+		return program;
 	}
 
 }
