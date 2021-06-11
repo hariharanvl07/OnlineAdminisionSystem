@@ -1,4 +1,4 @@
-package com.project.onlineAdmissionSystem.exceptions;
+package com.project.onlineAdmisionSystem.exceptions;
 
 
 /**
