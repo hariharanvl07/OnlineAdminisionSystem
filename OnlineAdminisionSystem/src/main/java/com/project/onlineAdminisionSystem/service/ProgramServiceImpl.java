@@ -91,7 +91,7 @@ private ICollegeService service;
 
 
 	@Override
-	public List<Integer> getCollegeByProgramName(String programName) {
+	public List<Integer> getCollegeIdByProgramName(String programName) {
 	
 		return repo.findCollegeByProgramName(programName);
 	}

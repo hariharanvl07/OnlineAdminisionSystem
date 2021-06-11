@@ -64,15 +64,12 @@ public List<Program> getProgramByName(@PathVariable("id") int id) {
 	return service.getProgramsByCollegeId(id);
 }
 
-@GetMapping("/getCollegeIdByProgramName/{programName}")
-public List<Integer> getCollegeIdByProgramName(@PathVariable("programName") String pname) {
 
-	return service.getCollegeByProgramName(pname);
-}
+
 @GetMapping("/getCollegeByProgramName/{programName}")
 public List<College> getCollegeByProgramName(@PathVariable("programName") String pname) {
 
-	List<Integer> id= service.getCollegeByProgramName(pname);
+	List<Integer> id= service.getCollegeIdByProgramName(pname);
 List<College> college = clgService.getCollegeByProgramName(id);
 return college;
 }

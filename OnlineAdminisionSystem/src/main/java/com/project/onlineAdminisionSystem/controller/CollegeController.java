@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.onlineAdminisionSystem.entity.College;
 import com.project.onlineAdminisionSystem.service.ICollegeService;
+import com.project.onlineAdminisionSystem.service.IProgramService;
 
 
 @RestController
@@ -24,6 +25,9 @@ import com.project.onlineAdminisionSystem.service.ICollegeService;
 public class CollegeController {
 	@Autowired
 	private ICollegeService service;
+	
+	@Autowired
+	private IProgramService progService;
 
 
 	@PostMapping("/addCollege")
@@ -37,6 +41,12 @@ public class CollegeController {
 		service.deleteCollegeById(id);
 	}
 	
+	
+	@DeleteMapping("/deleteCollegeByName/{collegeName}")
+	public void deleteCollegeByName(@PathVariable("collegeName") String name) {
+		service.deleteCollegeByName(name);
+	}
+	
 @GetMapping("/getAllColleges")
 public List<College> getAllColleges() {
 
@@ -46,5 +56,14 @@ public List<College> getAllColleges() {
 public Optional<College> getCollegeByName(@PathVariable("collegeName") String name) {
 
 	return service.getCollegeDetailsByName(name);
+}
+
+
+@GetMapping("/getCollegeByProgramName/{programName}")
+public List<College> getCollegeByProgramName(@PathVariable("programName") String pname) {
+
+	List<Integer> id= progService.getCollegeIdByProgramName(pname);
+List<College> college = service.getCollegeByProgramName(id);
+return college;
 }
 }

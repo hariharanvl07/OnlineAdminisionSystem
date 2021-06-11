@@ -16,6 +16,7 @@ public interface ICollegeService
 
 	
 	public void deleteCollegeById(int collegeId);
+	public void deleteCollegeByName(String collegeName);
 
 	public College  updateCollegeDetails(College college);
 	public  Optional<College> getCollegeDetailsById(int collegeId);

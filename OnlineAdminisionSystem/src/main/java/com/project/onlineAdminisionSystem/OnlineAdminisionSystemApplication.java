@@ -15,21 +15,6 @@ public class OnlineAdminisionSystemApplication /*implements CommandLineRunner  *
 		
 	}
 
-/*@Autowired 
-private ICollegeService repo;
-	
-	@Override
-	public void run(String... args) throws Exception {
-	
-		
-		
-		
-		Address add = new Address("chennai","tamilNadu","india","9898");
-		University uni = new University("SRMU", add);
-		College clg =new College("SRM",add,uni);
-		
-		
-	}*/
 
 
 }

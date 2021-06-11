@@ -28,7 +28,7 @@ public class Program
  
 
 	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="collegeId")
+	@JoinColumn(name="collegeId")	
 	private College college;
 
 	

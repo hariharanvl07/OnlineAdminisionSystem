@@ -25,24 +25,21 @@ private ICollegeRepository repo;
 
 	@Override
 	public List<College> viewAllCollegeDetails() {
-		// TODO Auto-generated method stub
 		return repo.findAll();
 	}
 
 	@Override
 	public void deleteCollegeById(int collegeId) {
-		// TODO Auto-generated method stub
 	repo.deleteById(collegeId);	
 	}
 
 	@Override
 	public College updateCollegeDetails(College college) {
-		// TODO Auto-generated method stub
 		College clg = repo.findById(college.getCollegeRegId()).orElseThrow();
-		/*clg.setBranchList(college.getBranchList());
-		clg.setCollegeAddress(college.getCollegeAddress());*/
+		clg.setBranchList(college.getBranchList());
+		clg.setCollegeAddress(college.getCollegeAddress());
 		clg.setCollegeName(college.getCollegeName());
-		//clg.setCourseList(college.getCourseList());
+		clg.setCourseList(college.getCourseList());
 		clg.setProgramList(college.getProgramList());
 		
 		
@@ -74,6 +71,13 @@ private ICollegeRepository repo;
 	college=null;
 	}
 		return clgList;
+	}
+
+	@Override
+	public void deleteCollegeByName(String collegeName) {
+		College clg = repo.findBycollegeName(collegeName).orElseThrow();
+		
+		repo.deleteById(clg.getCollegeRegId());
 	}
 	
 	

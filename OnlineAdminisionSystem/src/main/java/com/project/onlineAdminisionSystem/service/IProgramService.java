@@ -23,6 +23,6 @@ public interface IProgramService {
 	List<Program> getProgramByEligibility(String programEligibility);
 	public List<Program> getProgramsByCollegeId(int collegeId);
 	public List<Program> getProgramsByCollegeName(String name);
-	List<Integer> getCollegeByProgramName(String programName);
+	List<Integer> getCollegeIdByProgramName(String programName);
 
 }
