@@ -1,22 +1,27 @@
 package com.project.onlineAdminisionSystem.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
 public class Course 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int courseId;
 	private String courseName;
 	private String description;
 	private String eligibility;
 	//private College college;
-	private ArrayList<Branch> branches;
+	
+	@OneToMany
+	private List<Branch> branches;
 	
 	@ManyToOne
 	private College college;
@@ -50,14 +55,14 @@ public class Course
 	public void setCollege(College college) {
 		this.college = college;
 	}
-	public ArrayList<Branch> getBranches() {
+	public List<Branch> getBranches() {
 		return branches;
 	}
-	public void setBranches(ArrayList<Branch> branches) {
+	public void setBranches(List<Branch> branches) {
 		this.branches = branches;
 	}
 	public Course(int courseId, String courseName, String description, String eligibility, College college,
-			ArrayList<Branch> branches) {
+			List<Branch> branches) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;

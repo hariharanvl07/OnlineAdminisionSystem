@@ -14,12 +14,19 @@ class CollegeSericeImpl implements ICollegeService{
 
 @Autowired
 private ICollegeRepository repo;
-	
+
+@Autowired 
+private ICollegeService service;
+
+@Autowired
+private IUniversityService uniserv;
 
 
 @Override
 	public College addCollege(College college) {
+
 	
+
 		return repo.save(college);
 	}
 
@@ -48,7 +55,7 @@ private ICollegeRepository repo;
 
 	@Override
 	public Optional<College> getCollegeDetailsById(int collegeId) {
-		// TODO Auto-generated method stub
+	
 		return repo.findById(collegeId);
 	}
 
@@ -79,6 +86,14 @@ private ICollegeRepository repo;
 		
 		repo.deleteById(clg.getCollegeRegId());
 	}
+
+	@Override
+	public List<College> getCollegeByuniversityName(String universityName) {
+
+		return repo.findByuniversityName(universityName);
+	}
+
+	
 	
 	
 	

@@ -1,12 +1,15 @@
 package com.project.onlineAdminisionSystem.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.onlineAdminisionSystem.entity.Application;
 import com.project.onlineAdminisionSystem.repository.IApplicationRepository;
 
+@Service
 public class ApplicationServiceImpl implements IApplicationService {
 	
 	@Autowired
@@ -14,50 +17,52 @@ public class ApplicationServiceImpl implements IApplicationService {
 
 	@Override
 	public Application addApplication(Application application) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.save(application);
 	}
 
 	@Override
-	public ArrayList<Application> viewAllApplicationDetails() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Application> viewAllApplicationDetails() {
+		return repo.findAll();
 	}
 
 	@Override
-	public ArrayList<Application> getApplicationDetailsByEmail(String email) {
+	public ArrayList<Application> getApplicationDetailsByEmailId(String emailId) {
 		
-		return repo.findByemailId(email);
+		return repo.findByemailId(emailId);
 	}
 
 	@Override
 	public ArrayList<Application> getApplicationDetailsByStatus(String status) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findByapplicationStatus(status);
 	}
 
 	@Override
-	public int deleteApplicationById(int applicationId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteApplicationById(int applicationId) {
+		repo.deleteById(applicationId);
 	}
 
 	@Override
-	public int deleteApplicationByEmail(String email) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteApplicationByEmailId(String emailId) {
+		 repo.deleteApplicationByEmailId(emailId);
 	}
 
 	@Override
 	public Application getApplicationById(int applicationId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findById(applicationId).orElseThrow();
 	}
 
 	@Override
 	public int updateApplicationStatus(Application app) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<Application> viewAllApplicationDetails(String mail) 
+	{
+		return repo.findByemailId(mail);
+	}
+
+	
+	
 
 }

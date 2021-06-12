@@ -3,21 +3,36 @@ package com.project.onlineAdminisionSystem.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class University {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int universityId;
 	private String name;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private Address address;
-	@OneToMany
-	private List<College> collgeList;
+	
+	
+@OneToMany(cascade = {CascadeType.ALL})
+	private List<College> collegeList;
+
+
+	
+	public List<College> getCollegeList() {
+	return collegeList;
+}
+
+public void setCollegeList(List<College> collegeList) {
+	this.collegeList = collegeList;
+}
 
 	public String getName() {
 		return name;
@@ -43,26 +58,31 @@ public class University {
 		this.address = address;
 	}
 
-	public List<College> getCollgeList() {
-		return collgeList;
-	}
 
-	public void setCollgeList(List<College> collgeList) {
-		this.collgeList = collgeList;
-	}
 
 	public University(String name, int universityId, Address address, ArrayList<College> collgeList) {
 		super();
 		this.name = name;
 		this.universityId = universityId;
 		this.address = address;
-		this.collgeList = collgeList;
+		
 	}
 
 	public University(String name) {
 		super();
 		this.name = name;
 
+	}
+	
+	
+	
+
+	public University(int universityId, String name, Address address, List<College> collegeList) {
+		super();
+		this.universityId = universityId;
+		this.name = name;
+		this.address = address;
+		this.collegeList = collegeList;
 	}
 
 	public University() {

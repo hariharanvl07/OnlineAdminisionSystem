@@ -27,14 +27,26 @@ public class College {
 	private List<Course> courseList;
 	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Branch> branchList;
-	@ManyToOne
+	
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name=" university_university_id")
 	private University university;
+	
+	private String universityName;
 	
 @OneToMany(cascade = {CascadeType.ALL})
 @JoinColumn(name="collegeId")
 	private List<Program> programList;
 	
 	
+
+
+	public String getUniversityName() {
+	return universityName;
+}
+public void setUniversityName(String universityName) {
+	this.universityName = universityName;
+}
 	public int getCollegeRegId() {
 		return collegeRegId;
 	}
@@ -66,29 +78,26 @@ public class College {
 	public void setBranchList(List<Branch> branchList) {
 		this.branchList = branchList;
 	}
+
+	
+	
 	public University getUniversity() {
 		return university;
 	}
-	public void setUniversityName(University university) {
+	public void setUniversity(University university) {
 		this.university = university;
 	}
-	
-	
-	
 	public List<Program> getProgramList() {
 		return programList;
 	}
 	public void setProgramList(List<Program> programList) {
 		this.programList = programList;
 	}
-	public void setUniversity(University university) {
-		this.university = university;
-	}
-	
+
 	
 	
 	public College(int collegeRegId, String collegeName, Address collegeAddress, List<Program> programList,
-			List<Course> courseList, List<Branch> branchList, University university) {
+			List<Course> courseList, List<Branch> branchList,String universityName) {
 		super();
 		this.collegeRegId = collegeRegId;
 		this.collegeName = collegeName;
@@ -96,20 +105,22 @@ public class College {
 		this.programList = programList;
 		this.courseList = courseList;
 		this.branchList = branchList;
-		this.university = university;
+		this.universityName=universityName;
+	
+	
 	}
 	public College(String collegeName, Address collegeAddress, List<Course> courseList, University university) {
 		super();
 		this.collegeName = collegeName;
 		this.collegeAddress = collegeAddress;
 		this.courseList = courseList;
-		this.university= university;
+		
 	}
 	public College(String collegeName, Address collegeAddress, University university) {
 		super();
 		this.collegeName = collegeName;
 		this.collegeAddress = collegeAddress;
-		this.university = university;
+	;
 	}
 	public College(int collegeRegId, String collegeName) {
 		super();
