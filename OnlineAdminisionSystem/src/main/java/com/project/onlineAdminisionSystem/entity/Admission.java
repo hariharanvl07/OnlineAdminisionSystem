@@ -2,6 +2,7 @@ package com.project.onlineAdminisionSystem.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -9,7 +10,7 @@ import javax.persistence.OneToOne;
 public class Admission
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int admissionId;
 	private String emailId;
 	private String applicationId;

@@ -1,10 +1,14 @@
 package com.project.onlineAdminisionSystem.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.onlineAdminisionSystem.entity.University;
 
 public interface IUniversityRepository extends JpaRepository<University, Integer>{
+
+	Optional<University> findByname(String uname);
 	
 }
 

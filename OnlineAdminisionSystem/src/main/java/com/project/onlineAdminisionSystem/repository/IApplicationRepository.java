@@ -1,17 +1,24 @@
 package com.project.onlineAdminisionSystem.repository;
 
 import java.util.ArrayList;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.project.onlineAdminisionSystem.entity.Application;
 
-public interface IApplicationRepository {
-	public Application addApplication(Application application);
-	public ArrayList<Application> viewAllApplicationDetails();
-	public  ArrayList<Application> getApplicationDetailsByEmail(String email);
-	public  ArrayList<Application> getApplicationDetailsByStatus(String status);
-	public int deleteApplicationById(int applicationId);
-	public int deleteApplicationByEmail(String email);
-	public Application getApplicationById(int applicationId);
-	public int  updateApplicationStatus(Application app);
-	public ArrayList<Application> findByemailId(String email);
+@Repository
+public interface IApplicationRepository extends JpaRepository<Application , Integer>{
+
+	ArrayList<Application> findByemailId(String emailId);
+
+	ArrayList<Application> findByapplicationStatus(String status);
+
+	void deleteApplicationByEmailId(String emailId);
+
+
+
+	
+	
 
 }

@@ -2,6 +2,7 @@ package com.project.onlineAdminisionSystem.repository;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,6 +21,7 @@ public interface ICollegeRepository extends JpaRepository<College , Integer> {
 	Optional<College> findBycollegeName(String collegeName);
 	@Query(value="delete from college where college_reg_id = :name ;",nativeQuery=true)
 	void deleteBycollegeName(@Param("name") String collegeName);
+	List<College> findByuniversityName(String universityName);
 		
 		
 	}

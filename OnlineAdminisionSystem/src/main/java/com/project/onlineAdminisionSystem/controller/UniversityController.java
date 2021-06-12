@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +25,13 @@ import com.project.onlineAdminisionSystem.service.IUniversityService;
 public class UniversityController {
 	@Autowired
 	private IUniversityService service;
+	
 
+	
 
 	@PostMapping("/addUniversity")
 	public University addUniversity(@RequestBody University university) {
-
+		
 		return service.addUniversity(university);
 	}
 	
@@ -46,5 +49,11 @@ public List<University> getAllUniversitys() {
 public Optional<University> getUniversityDetailsById(@PathVariable("id") int id) {
 
 	return service.getUniversityDetailsById(id);
+}
+
+@GetMapping("/getUniversityDetailsByName/{name}")
+public Optional<University> getUniversityDetailsByName(@PathVariable("name") String name) {
+
+	return service.getUniversityByName(name);
 }
 }
