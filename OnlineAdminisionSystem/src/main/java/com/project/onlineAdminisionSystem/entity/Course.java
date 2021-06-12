@@ -3,13 +3,14 @@ package com.project.onlineAdminisionSystem.entity;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
 public class Course 
 {
 	@Id
+	@GeneratedValue
 	private int courseId;
 	private String courseName;
 	private String description;
@@ -64,6 +65,9 @@ public class Course
 		this.eligibility = eligibility;
 		this.college = college;
 		this.branches = branches;
+	}
+	public Course() {
+		super();
 	}
 	
 }
