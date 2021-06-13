@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,19 +16,21 @@ import com.project.onlineAdminisionSystem.repository.IProgramRepository;
 public class ProgramServiceImpl implements IProgramService{
 @Autowired
 private IProgramRepository repo;
-
+Logger logger = LoggerFactory.getLogger(ProgramServiceImpl.class);
 @Autowired 
 private ICollegeService service;
 	@Override
 	public Program addProgram(Program program) {
-	
+		logger.info("addProgram service started");
+		logger.info("addProgram service ended");
 		return repo.save(program);
 	}
 
 	
 	@Override
 	public List<Program> viewAllProgramDetails() {
-
+		logger.info("getAllPrograms service started");
+		logger.info("getAllPrograms service ended");
 		return repo.findAll();
 	}
 
@@ -38,7 +42,8 @@ private ICollegeService service;
 
 	@Override
 	public Optional<Program> getProgramDetailsByName(String programName) {
-
+		logger.info("getProgramByName controller started");
+		logger.info("getProgrambyName controller ended");
 		return repo.findByprogramName(programName);
 	}
 

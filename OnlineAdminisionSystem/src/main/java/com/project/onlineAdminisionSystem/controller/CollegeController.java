@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.onlineAdminisionSystem.entity.College;
 import com.project.onlineAdminisionSystem.service.ICollegeService;
 import com.project.onlineAdminisionSystem.service.IProgramService;
-import com.project.onlineAdminisionSystem.service.IUniversityService;
 
 
 @RestController
@@ -33,8 +32,7 @@ public class CollegeController {
 	@Autowired
 	private ICollegeService service;
 	
-	@Autowired
-	private IUniversityService uniserv;
+	
 	
 	@Autowired
 	private IProgramService progService;
@@ -54,14 +52,14 @@ logger.info("addCollege controller ended");
 	
 	@PostMapping("/updateCollege/{id}")
 	public College updateCollege(@PathVariable("id")int id,@RequestBody College college) {
-	College clg= service.getCollegeDetailsById(id).orElseThrow();
+		logger.info("updateCollege controller started");
+		College clg= service.getCollegeDetailsById(id).orElseThrow();
 	clg.setCollegeName(college.getCollegeName());
-	clg.setBranchList(college.getBranchList());
 	clg.setCollegeAddress(college.getCollegeAddress());
 	clg.setCourseList(college.getCourseList());
 	clg.setProgramList(college.getProgramList());
-	clg.setUniversity(college.getUniversity());
-		
+	
+	logger.info("updateCollege controller ended");
 
 		
 		
@@ -70,40 +68,50 @@ logger.info("addCollege controller ended");
 	
 	@DeleteMapping("/deleteCollege/{id}")
 	public void deleteCollegeById(@PathVariable("id") int id) {
+		logger.info("deleteCollege controller started");
 		service.deleteCollegeById(id);
+		logger.info("deleteCollege controller ended");
 	}
 	
 	
 	@DeleteMapping("/deleteCollegeByName/{collegeName}")
 	public void deleteCollegeByName(@PathVariable("collegeName") String name) {
+		logger.info("deleteCollegeByName controller started");
 		service.deleteCollegeByName(name);
+		logger.info("deleteCollegeByName controller ended");
 	}
 	
 @GetMapping("/getAllColleges")
 public List<College> getAllColleges() {
-
+	logger.info("getAllCollege controller started");
+	logger.info("getAllCollege controller ended");
 	return service.viewAllCollegeDetails();
+	
 }
 
 
 @GetMapping("/getCollegeById/{id}")
-public College getAllColleges(@Param("id" )int id) {
-
+public College getCollegeById(@Param("id" )int id) {
+	logger.info("getCollegeById controller started");
+	logger.info("getCollegeById controller ended");
 	return service.getCollegeDetailsById(id).orElseThrow();
 }
 
 @GetMapping("/getCollegeByName/{collegeName}")
 public Optional<College> getCollegeByName(@PathVariable("collegeName") String name) {
-
+	logger.info("getCollegeByName controller started");
+	logger.info("getCollegeByName controller ended");
 	return service.getCollegeDetailsByName(name);
 }
 
 
 @GetMapping("/getCollegeByProgramName/{programName}")
 public List<College> getCollegeByProgramName(@PathVariable("programName") String pname) {
-
+	logger.info("getCollegeByProgram controller started");
+	
 	List<Integer> id= progService.getCollegeIdByProgramName(pname);
 List<College> college = service.getCollegeByProgramName(id);
+logger.info("getCollegeByProgram controller ended");
 return college;
 }
 }

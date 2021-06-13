@@ -1,9 +1,12 @@
 package com.project.onlineAdminisionSystem.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Branch 
@@ -13,6 +16,9 @@ public class Branch
 	private int branchId;
 	private String branchName;
 	private String branchDescription;
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="courseId")
+	private Branch branch;
 	public int getBranchId() {
 		return branchId;
 	}
@@ -36,6 +42,9 @@ public class Branch
 		this.branchId = branchId;
 		this.branchName = branchName;
 		this.branchDescription = branchDescription;
+	}
+	public Branch() {
+		super();
 	}
 	
 }
