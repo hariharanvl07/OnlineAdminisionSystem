@@ -2,6 +2,8 @@ package com.project.onlineAdminisionSystem.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,44 +21,78 @@ import com.project.onlineAdminisionSystem.service.IApplicationService;
 @RequestMapping("/application")
 
 public class ApplicationController {
+	
+	Logger logger = LoggerFactory.getLogger(ApplicationController.class);
 
 	@Autowired
 	private IApplicationService service;
 	
 	@PostMapping("/addApplication")
 	public Application addApplication(@RequestBody Application application) {
+		
+		logger.info("addApplication controller started");
+		logger.info("addApplication controller ended");
+		
 		return service.addApplication(application);
 	}
 	
 	@DeleteMapping("/deleteApplication/{id}")
 	public void deleteApplicationById(@PathVariable("id") int id) {
+		
+		logger.info("deleteApplicationById service started");
 		service.deleteApplicationById(id);
+		logger.info("deleteApplicationById service ended");
+		
 	}
 	@DeleteMapping("/deleteApplicationByEmailId/{emailId}")
 	public void deleteApplicationByEmailId(@PathVariable("emailId") String emailId) {
+		
+		logger.info("deleteApplicationByEmailId service started");
+		
 		service.deleteApplicationByEmailId(emailId);
+		
+		logger.info("deleteApplicationByEmailId service ended");
 	}
-	@GetMapping("/getAllApplication")
-	public List<Application> getAllApplication(){
+	@GetMapping("/viewAllApplication")
+	public List<Application> viewAllApplication(){
+		
+		logger.info("viewAllApplicationDetails service started");
+		logger.info("viewAllApplicationDetails service ended");
 		return service.viewAllApplicationDetails();
 		
 	}
 	@GetMapping("/getApplicationById/{applicationId}")
 	public Application getApplicationById(@PathVariable("applicationId") int id){
+		
+		logger.info("getApplicationById service started");
+		logger.info("getApplicationById service ended");
+		
 		return service.getApplicationById(id);
 	}
-	@GetMapping("/getAllApplicationByEmailId/{emailId}")
-	public List<Application> getAllApplicationByemailId(@PathVariable("emailId") String mail){
-		return service.viewAllApplicationDetails(mail);
+	@GetMapping("/getApplicationByEmailId/{emailId}")
+	public List<Application> getApplicationByEmailId(@PathVariable("emailId") String mail){
+		
+		logger.info("getApplicationDetailsByEmailId service started");
+		logger.info("getApplicationDetailsByEmailId service ended");
+		
+		return service.getApplicationDetailsByEmailId(mail);
 	}
 	@GetMapping("/getAllApplicationByApplicationStatus/{applicationStatus}")
 	public List<Application> getAllApplicationByApplicationStatus(@PathVariable("applicationStatus") String status){
+		
+		logger.info("getApplicationDetailsByStatus service started");
+		logger.info("getApplicationDetailsByStatus service ended");
+		
 		return service.viewAllApplicationDetails(status);
 	}
 	@PutMapping("/updateApplicationStatus/{applicationId}")
 	public Application updateApplication(@PathVariable("applicationId")int id,@RequestBody Application application) {
+		
+		logger.info("updateApplicationStatus service started");
 		Application sts= service.getApplicationById(id);
 		sts.setApplicationStatus(application.getApplicationStatus());
+		logger.info("viewAllApplicationDetails service ended");
+		
 		return service.addApplication(application);
 	}
 }	
