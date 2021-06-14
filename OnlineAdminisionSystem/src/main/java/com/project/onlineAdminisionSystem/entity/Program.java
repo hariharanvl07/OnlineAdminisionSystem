@@ -23,6 +23,10 @@ public class Program
 	
 	
 	
+	public Program() {
+		super();
+	}
+
 	public Integer getProgramId() {
 		return programId;
 	}

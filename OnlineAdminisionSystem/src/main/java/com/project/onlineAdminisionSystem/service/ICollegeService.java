@@ -13,7 +13,7 @@ public interface ICollegeService
 {
 	public College addCollege(College college);
 	public List<College> viewAllCollegeDetails();
-
+	public Optional<College> getCollegeDetailsByName(String collegeName);
 
 	public void deleteCollegeById(int collegeId);
 

@@ -17,6 +17,9 @@ public class Address
 	
 
 	
+	public Address() {
+		super();
+	}
 	public int getAddressId() {
 		return addressId;
 	}

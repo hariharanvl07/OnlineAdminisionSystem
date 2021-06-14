@@ -16,6 +16,10 @@ public class Course
 	//private College college;
 	private ArrayList<Branch> branches;
 	
+	
+	public Course() {
+		super();
+	}
 	@ManyToOne
 	private College college;
 	public int getCourseId() {

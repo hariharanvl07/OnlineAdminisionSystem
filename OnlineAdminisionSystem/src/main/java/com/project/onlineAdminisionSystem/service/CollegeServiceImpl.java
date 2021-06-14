@@ -53,8 +53,11 @@ private ICollegeRepository repo;
 		// TODO Auto-generated method stub
 		return repo.findById(collegeId);
 	}
-	
-	
+	@Override
+	public Optional<College> getCollegeDetailsByName(String collegeName) {
+		// TODO Auto-generated method stub
+		return repo.findBycollegeName(collegeName);
+	}
 	
 	
 }

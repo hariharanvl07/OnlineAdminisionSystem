@@ -10,6 +10,10 @@ public class Branch
 	private int branchId;
 	private String branchName;
 	private String branchDescription;
+	
+	public Branch() {
+		super();
+	}
 	public int getBranchId() {
 		return branchId;
 	}
