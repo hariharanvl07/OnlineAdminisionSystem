@@ -76,11 +76,12 @@ public List<Program> getProgramById(@PathVariable("id") int id) {
 	return service.getProgramsByCollegeId(id);
 }
 
+
 @GetMapping("/getProgrameByEligiblity/{eligiblity}")
-public List<Program> 0(@PathVariable("eligiblity") String eligiblity) {
-	logger.info("getProgramById controller started");
-	logger.info("getProgrambyId controller ended");
-	return service.getProgrameByEligiblity(eligiblity);
+ List<Program> getProgrameByEligiblity (@PathVariable("eligiblity") String eligiblity) {
+	logger.info("getProgrameByEligiblity controller started");
+	logger.info("getProgrameByEligiblity controller ended");
+	return service.getProgramByEligibility(eligiblity);
 }
 
 

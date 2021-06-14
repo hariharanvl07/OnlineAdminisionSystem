@@ -18,7 +18,11 @@ public class Branch
 	private String branchDescription;
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="courseId")
-	private Branch branch;
+	private Course course;
+
+	
+	
+	
 	public int getBranchId() {
 		return branchId;
 	}

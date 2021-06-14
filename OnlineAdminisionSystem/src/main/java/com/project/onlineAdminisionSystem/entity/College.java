@@ -21,12 +21,13 @@ public class College {
 	private int collegeRegId;
 	private String collegeName;
 	@OneToOne(cascade = {CascadeType.ALL})
+@JoinColumn(name=" adddressId")
 	private Address collegeAddress;
 	
-	@OneToMany(cascade = {CascadeType.ALL})
-	@JoinColumn(name="collegeId")
-	private List<Course> courseList;
+	@OneToMany(cascade = {CascadeType.ALL},mappedBy="college")
 
+	private List<Course> courseList;
+		
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="universityId")
@@ -37,8 +38,11 @@ public class College {
 @OneToMany(cascade = {CascadeType.ALL})
 @JoinColumn(name="collegeId")
 	private List<Program> programList;
+
+
 	
 	
+
 
 
 	public String getUniversityName() {
@@ -76,6 +80,7 @@ public void setUniversityName(String universityName) {
 	
 	
 	
+	
 	public List<Program> getProgramList() {
 		return programList;
 	}
@@ -93,30 +98,26 @@ public void setUniversityName(String universityName) {
 		this.collegeAddress = collegeAddress;
 		this.programList = programList;
 		this.courseList = courseList;
-	
+		
 		this.universityName=universityName;
 	
 	
 	}
-	public College(String collegeName, Address collegeAddress, List<Course> courseList, University university) {
+	
+	
+	
+	
+	public College(String collegeName, Address collegeAddress, List<Course> courseList, University university,
+			String universityName, List<Program> programList) {
 		super();
 		this.collegeName = collegeName;
 		this.collegeAddress = collegeAddress;
 		this.courseList = courseList;
+		this.university = university;
+		this.universityName = universityName;
+		this.programList = programList;
 		
 	}
-	public College(String collegeName, Address collegeAddress, University university) {
-		super();
-		this.collegeName = collegeName;
-		this.collegeAddress = collegeAddress;
-	;
-	}
-	public College(int collegeRegId, String collegeName) {
-		super();
-		this.collegeRegId = collegeRegId;
-		this.collegeName = collegeName;
-	}
-	
 	public College() {
 		super();
 	}

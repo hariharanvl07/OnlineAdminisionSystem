@@ -13,7 +13,7 @@ import com.project.onlineAdminisionSystem.entity.College;
 import com.project.onlineAdminisionSystem.repository.ICollegeRepository;
 @Service
 class CollegeSericeImpl implements ICollegeService{
-	Logger logger = LoggerFactory.getLogger(ICollegeServiceImpl.class);
+	Logger logger = LoggerFactory.getLogger(ICollegeService.class);
 @Autowired
 private ICollegeRepository repo;
 
