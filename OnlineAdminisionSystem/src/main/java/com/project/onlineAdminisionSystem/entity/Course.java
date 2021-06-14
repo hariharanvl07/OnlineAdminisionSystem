@@ -1,12 +1,13 @@
 package com.project.onlineAdminisionSystem.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 @Entity
@@ -20,10 +21,12 @@ public class Course
 	private String eligibility;
 	//private College college;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name="courseId")
 	private List<Branch> branches;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
+@JoinColumn(name=" collegeId")
 	private College college;
 	public int getCourseId() {
 		return courseId;
@@ -49,26 +52,21 @@ public class Course
 	public void setEligibility(String eligibility) {
 		this.eligibility = eligibility;
 	}
-	public College getCollege() {
-		return college;
-	}
-	public void setCollege(College college) {
-		this.college = college;
-	}
+	
 	public List<Branch> getBranches() {
 		return branches;
 	}
 	public void setBranches(List<Branch> branches) {
 		this.branches = branches;
 	}
-	public Course(int courseId, String courseName, String description, String eligibility, College college,
+	public Course(int courseId, String courseName, String description, String eligibility,
 			List<Branch> branches) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
 		this.description = description;
 		this.eligibility = eligibility;
-		this.college = college;
+		
 		this.branches = branches;
 	}
 	public Course() {

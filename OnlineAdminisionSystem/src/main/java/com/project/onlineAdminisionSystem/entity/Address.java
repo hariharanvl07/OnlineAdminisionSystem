@@ -1,9 +1,12 @@
 package com.project.onlineAdminisionSystem.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address 
@@ -17,6 +20,11 @@ public class Address
 	private String country;
 	private String zipcode;
 	private String landmark;
+	@OneToOne(cascade = {CascadeType.ALL})
+
+	private College college;
+	
+	
 	
 
 	
