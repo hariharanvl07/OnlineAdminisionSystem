@@ -40,11 +40,6 @@ public class College {
 	private List<Program> programList;
 
 
-	
-	
-
-
-
 	public String getUniversityName() {
 	return universityName;
 }

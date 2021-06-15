@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 //import com.project.onlineAdminisionSystem.entity.ProgramScheduled;
 
@@ -16,11 +18,21 @@ public class Application
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer applicationId;
+	
+	@NotNull(message = "Applicant Name cannot be null")
+	@Size(min=3)
 	private String applicantFullName;
+	
+	@NotNull(message = "DateofBirth cannot be null")
 	private LocalDate dateOfBirth;
+	
+	@NotNull(message = "HighestQualification cannot be null")
 	private String highestQualification;
+	@NotNull(message = "Final percentage cannot be null")
 	private double finalYearPercentage;
 	private String goals;
+	
+	@NotNull(message = "Email Id cannot be null")
 	private String emailId;
 	//private ProgramScheduled schedule;
 	private String applicationStatus;//Applied/ScheduleForInterview/InterViewCompleted/ApplicationAccepted/ApplicationRejected
