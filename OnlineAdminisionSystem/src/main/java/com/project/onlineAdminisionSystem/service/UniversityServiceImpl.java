@@ -32,13 +32,7 @@ private collegeValidation validate;
 	public University addUniversity(University university) {
 	
 	logger.info("addUniversity service started");
-	if(!validate.validateCollege(university))
-		throw new UniversityException("college is not entered");
-	
-		
-	
-	
-	else
+
 		logger.info("addUniversity service ended");	
 		return repo.save(university);
 	}

@@ -47,4 +47,10 @@ private IAdmissionRepository repo;
 		return repo.findAll();
 	}
 
+	@Override
+	public Optional<Admission> getAdmissionByApplicationId(int applicationId) {
+		
+		return repo.getAdmissionByApplicationId(applicationId);
+	}
+
 }

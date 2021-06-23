@@ -1,5 +1,7 @@
 package com.project.onlineAdminisionSystem.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 private UserDetailsRepository repo;
 	@Override
 	public UserDetails addUser(UserDetails user) {
-		// TODO Auto-generated method stub
+
 		return repo.save(user);
 	}
 
@@ -20,6 +22,18 @@ private UserDetailsRepository repo;
 	public UserDetails getUser(String name) {
 		
 		return repo.findByusername(name);
+	}
+
+	@Override
+	public UserDetails updateUser(UserDetails user) {
+	
+		return repo.save(user);
+	}
+
+	@Override
+	public Optional<UserDetails> getUserById(int id) {
+		
+		return repo.findById(id);
 	}
 
 }

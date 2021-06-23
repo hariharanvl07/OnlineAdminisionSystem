@@ -2,6 +2,7 @@ package com.project.onlineAdminisionSystem.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,27 +19,35 @@ public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull
-	@Size(min = 5, max = 15)
+
+
 	private String username;
-	@NotNull
-	@Size(min = 8, max = 15)
+
 	private String password;
-	@NotNull
-	@Size(min = 10, max = 10)
+
 	private long phoneNumber;
-	@NotNull
+
 	private String emailId;
 	private String firstName;
 	private String MiddleName;
 	private String LastName;
-	@OneToMany
+	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "stuentId")
 	private List<Document> document;
 
-	@OneToMany
+	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "stuentId")
 	private List<Application> application;
+	
+
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public long getPhoneNumber() {
 		return phoneNumber;
@@ -112,25 +121,17 @@ public class UserDetails {
 		this.application = application;
 	}
 
-	public UserDetails(@NotNull @Size(min = 5, max = 15) String username,
-			@NotNull @Size(min = 8, max = 15) String password, @NotNull @Size(min = 10, max = 10) long phoneNumber,
-			@NotNull String emailId, String firstName, String middleName, String lastName, List<Document> document,
-			List<Application> application) {
+
+
+	public UserDetails(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.phoneNumber = phoneNumber;
-		this.emailId = emailId;
-		this.firstName = firstName;
-		MiddleName = middleName;
-		LastName = lastName;
-		this.document = document;
-		this.application = application;
+
 	}
 
-	public UserDetails(int id, @NotNull @Size(min = 5, max = 15) String username,
-			@NotNull @Size(min = 8, max = 15) String password, @NotNull @Size(min = 10, max = 10) long phoneNumber,
-			@NotNull String emailId, String firstName, String middleName, String lastName, List<Document> document) {
+	public UserDetails(int id, String username, String password, long phoneNumber, String emailId, String firstName,
+			String middleName, String lastName, List<Document> document, List<Application> application) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -141,13 +142,7 @@ public class UserDetails {
 		MiddleName = middleName;
 		LastName = lastName;
 		this.document = document;
-	}
-
-	public UserDetails(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-
+		this.application = application;
 	}
 
 	public UserDetails() {

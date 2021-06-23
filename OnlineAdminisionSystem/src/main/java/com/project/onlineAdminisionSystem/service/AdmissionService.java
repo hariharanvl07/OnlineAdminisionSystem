@@ -10,4 +10,5 @@ public interface AdmissionService {
 	public Admission updateAdmission(Admission admission);
 	public Optional<Admission> getAdmissionbyId(int admissionId);
 	public List<Admission>viewAllAdmissions();
+	public Optional<Admission> getAdmissionByApplicationId(int applicationId);
 }

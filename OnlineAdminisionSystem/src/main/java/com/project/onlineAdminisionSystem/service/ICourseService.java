@@ -12,9 +12,10 @@ public interface ICourseService {
 	public  Optional<Course> getCourseDetailsByCourseName(String courseName);
 	public  ArrayList<Course> getCourseDetailsByCollegeName(String collegeName);
 	public  ArrayList<Course> getCourseDetailsByEligibility(String eligibility);
-	public  Course getCourseDetailsByCourseId(int courseId);
+	public  Optional<Course> getCourseDetailsByCourseId(int courseId);
 	public void deleteCourseById(int courseById);
 	public void deleteCourseByName(String courseName);
 	public Course  updateCourseDetails(Course course);
-	public List<Course> getCoursesByProgramName(String programName);
+	
+	public List<Course> getCoursesByProgramId(int id);
 }

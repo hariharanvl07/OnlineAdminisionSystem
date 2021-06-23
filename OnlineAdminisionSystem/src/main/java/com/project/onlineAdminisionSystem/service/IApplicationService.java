@@ -17,10 +17,11 @@ public interface IApplicationService
 	
 	public Application getApplicationById(int applicationId);
 	
-	public int  updateApplicationStatus(Application app);
+	public Application  updateApplicationStatus(Application app);
 	
 	Application getApplicationDetailsByEmailId(String emailId);
 	public Application viewAllApplicationDetailsByMail(String mail);
 	List<Application> viewAllApplicationDetails(String status);
+	public List<Application> getAllApplicationByStudentId(int id);
 	
 }

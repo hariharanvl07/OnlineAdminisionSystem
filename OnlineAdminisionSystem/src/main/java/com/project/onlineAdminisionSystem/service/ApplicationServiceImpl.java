@@ -84,12 +84,16 @@ public class ApplicationServiceImpl implements IApplicationService {
 	}
 
 	@Override
-	public int updateApplicationStatus(Application app) {
+	public Application updateApplicationStatus(Application app) {
 		
 		logger.info("updateApplicationStatus service started");
 		logger.info("updateApplicationStatus service ended");
-		return 0;
+		return repo.save(app);
 	}
+	
+	
+	
+	
 
 	@Override
 	public Application viewAllApplicationDetailsByMail(String mail) 
@@ -107,6 +111,12 @@ public class ApplicationServiceImpl implements IApplicationService {
 		logger.info("viewAllApplicationDetails service ended");
 		
 		return repo.findByapplicationStatus(status);
+	}
+
+	@Override
+	public List<Application> getAllApplicationByStudentId(int id) {
+	
+		return repo.finApplicationByStudenyId(id);
 	}
 
 	

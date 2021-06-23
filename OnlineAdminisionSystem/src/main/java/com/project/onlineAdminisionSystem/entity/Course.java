@@ -9,54 +9,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-
-
 @Entity
 public class Course 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int courseId;
-	@NotNull(message="course name cannot be null")
 	private String courseName;
-	@NotNull(message="description cannot be null")
 	private String description;
-	@NotNull(message="eligibility cannot be null")
 	private String eligibility;
 	//private College college;
-@OneToMany(cascade = { CascadeType.ALL })
-@JoinColumn(name="CourseId")
-	private List< Branch> branches;
-
-private String startDate;
-private String endDate;
-private long courseFees;
-
-
-
-
+	private String startDate;
+	private String endDate;
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name="courseId")
+	private List<Branch> branches;
 	
-	public long getCourseFees() {
-	return courseFees;
-}
-public void setCourseFees(long courseFees) {
-	this.courseFees = courseFees;
-}
-	public String getStartDate() {
-	return startDate;
-}
-public void setStartDate(String startDate) {
-	this.startDate = startDate;
-}
-public String getEndDate() {
-	return endDate;
-}
-public void setEndDate(String endDate) {
-	this.endDate = endDate;
-}
+	
+
+
 	public int getCourseId() {
 		return courseId;
 	}
@@ -81,7 +52,7 @@ public void setEndDate(String endDate) {
 	public void setEligibility(String eligibility) {
 		this.eligibility = eligibility;
 	}
-
+	
 	public List<Branch> getBranches() {
 		return branches;
 	}
@@ -89,34 +60,44 @@ public void setEndDate(String endDate) {
 		this.branches = branches;
 	}
 	
-	public Course(@NotNull(message = "course name cannot be null") String courseName,
-			@NotNull(message = "description cannot be null") String description,
-			@NotNull(message = "eligibility cannot be null") String eligibility, List<Branch> branches,
-			String startDate, String endDate, long courseFees) {
+	
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public Course(int courseId, String courseName, String description, String eligibility,
+			List<Branch> branches) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.description = description;
+		this.eligibility = eligibility;
+		
+		this.branches = branches;
+	}
+	
+	
+	public Course(String courseName, String description, String eligibility, String startDate, String endDate,
+			List<Branch> branches) {
 		super();
 		this.courseName = courseName;
 		this.description = description;
 		this.eligibility = eligibility;
-		this.branches = branches;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.courseFees = courseFees;
+		this.branches = branches;
 	}
 	public Course() {
 		super();
 	}
-	public Course(@NotNull(message = "course name cannot be null") String courseName,
-			@NotNull(message = "description cannot be null") String description,
-			@NotNull(message = "eligibility cannot be null") String eligibility, List<@Valid Branch> branches,
-			String startDate, String endDate) {
-		super();
-		this.courseName = courseName;
-		this.description = description;
-		this.eligibility = eligibility;
-		this.branches = branches;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
-	
 	
 }

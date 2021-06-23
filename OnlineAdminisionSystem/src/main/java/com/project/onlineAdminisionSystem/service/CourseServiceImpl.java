@@ -67,12 +67,12 @@ private IProgramService service;
 	}
 
 	@Override
-	public Course getCourseDetailsByCourseId(int courseId) {
+	public Optional<Course> getCourseDetailsByCourseId(int courseId) {
 		
 		logger.info("getCourseDetailsByCourseId service started");
 		logger.info("getCourseDetailsByCourseId service ended");
 		
-		return repo.findById(courseId).orElseThrow();
+		return repo.findById(courseId);
 	}
 
 	@Override
@@ -99,25 +99,22 @@ private IProgramService service;
 	public Course updateCourseDetails(Course course) {
 		
 		logger.info("updateCourseDetails service started");
-		Course course1= repo.findById(course.getCourseId()).orElseThrow();
-		course1.setCourseName(course.getCourseName());
-		course1.setDescription(course.getDescription());
-		course1.setBranches(course.getBranches());
-		course1.setEligibility(course.getEligibility());
-		course1.setStartDate(course.getStartDate());
-		course1.setEndDate(course.getEndDate());
+		
 		
 		logger.info("updateCourseDetails service ended");
 
-		return repo.save(course1);
+		return repo.save(course);
 	}
 
 	@Override
-	public List<Course> getCoursesByProgramName(String programName) {
-		Program prg = service.getProgramDetailsByName(programName).orElseThrow();
-		List<Course> course = repo.findByprogramId(prg.getProgramId());
-		return course;
+	public List<Course> getCoursesByProgramId(int id) {
+		// TODO Auto-generated method stub
+		return repo.findByprogramId(id);
 	}
+
+	
+
+
 
 
 

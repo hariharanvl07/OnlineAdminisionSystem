@@ -20,19 +20,18 @@ public class Program
 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer programId;	
-	@NotNull(message = "program Name cannot be null")
-	@Size(min=2, max = 12)
+	
 	private String programName;
-	@NotNull(message = "programDescription cannot be null")
+	
 	
 	private String programDescription;
-	@NotNull(message = "programEligibility cannot be null")
+	
 
 	private String programEligibility;
-	@NotNull(message = "programDuration cannot be null")
+	
 	
 	private String programDuration;
-	@NotNull(message = "degreeOffered cannot be null")
+	
 	private String degreeOffered;
  @OneToMany(cascade = {CascadeType.ALL})
  @JoinColumn(name="programId")

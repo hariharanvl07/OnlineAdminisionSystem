@@ -89,4 +89,10 @@ public class College {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "College [collegeRegId=" + collegeRegId + ", collegeName=" + collegeName + ", collegeAddress="
+				+ collegeAddress + ", programList=" + programList + "]";
+	}
+
 }

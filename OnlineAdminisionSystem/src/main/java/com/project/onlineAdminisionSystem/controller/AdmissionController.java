@@ -46,6 +46,14 @@ public class AdmissionController {
 		Optional<Admission> test = service.getAdmissionbyId(admissionId);
 		return test;
 	}
+	
+	@GetMapping("/getAdmissionByApplicationId/{id}")
+	public Optional<Admission> getAdmissionByApplicationId(@PathVariable("id")int applicationId){
+		Optional<Admission> test = service.getAdmissionByApplicationId(applicationId);
+		return test;
+	}
+	
+	
 	@GetMapping("/viewAllAdmissions")
 	public List<Admission>viewAllAdmissions(){
 		List<Admission> test = service.viewAllAdmissions();

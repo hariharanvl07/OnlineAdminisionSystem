@@ -52,6 +52,16 @@ public class BranchController {
 		
 	}
 	
+	
+	
+	@GetMapping("/getBranchById/{id}")
+	public Branch getBranchDetailsById(@PathVariable("id") int id){
+		logger.info("getBranchByName Controller started");
+		logger.info("getBranchByName Controller ended");
+		return service.getBranchDetailsById(id);
+		
+	}
+	
 	@GetMapping("/getBranchByCourseName/{courseName}")
 	public List<Branch> getBranchByCourseName(@PathVariable("courseName") String courseName){
 		logger.info("getBranchByCourseName Controller started");
